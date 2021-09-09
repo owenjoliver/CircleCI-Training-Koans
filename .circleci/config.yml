@@ -7,18 +7,13 @@ jobs:
       - checkout
       # These two tests should run in parallel. Make it so!
       - run:
-          name: Make src
-          command: |
-            mkdir -p src
-            ls -l src
-      - run:
           name: Run Hello test
           command: |
-            bash /src/test_hello.sh
+            bash src/test_hello.sh
       - run:
           name: Run Goodbye test
           command: |
-            bash /src/test_goodbye.sh
+            bash src/test_goodbye.sh
 
 workflows:
   version: 2
