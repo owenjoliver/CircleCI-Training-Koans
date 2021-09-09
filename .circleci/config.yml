@@ -7,6 +7,10 @@ jobs:
       - checkout
       # These two tests should run in parallel. Make it so!
       - run:
+          name: Make src
+          command: |
+            mkdir -p src
+      - run:
           name: Run Hello test
           command: |
             ls -l
