@@ -1,21 +1,44 @@
-# CircleCI Training Kōans
+# Caching
 
-> _kōan_ (noun): a paradoxical anecdote or riddle, used in Zen Buddhism to demonstrate the inadequacy of logical reasoning and to provoke enlightenment.
+**Description:**
 
-In this repo, you will find a series of challenges of increasing difficulty related to CircleCI 2.1 configs. There is one challenge per folder; each challenge will include its own instructions via a `README.md`.
+We want to speed up our builds and we heard about this concept of "caching". We need to start storing a cache of our `package.json` so that it can be restored in subsequent builds.
 
-# How to follow along?
+In addition we need to know what to do if we need to force a new save of the cache.
 
-The best way to follow along is to create a new repository on your personal GitHub account for the purpose of running tests. You can copy the config files from each challenge into your own CircleCI project to test if the new config works.
+**Goals:**
 
-_side note_: If you come across an issue with a config that isn't directly related to the challenge, consider it a learning opportunity, unless it is related to an underlying change to the platform.
+- Uncomment out the `save_cache` and `restore_cache` steps
+- Update the `key` of each of those to point at the proper file
+- Push up a commit where you find it successfully saves the cache (should see something like this on the step):
 
-# Maintainers
+```
+Creating cache archive...
+Uploading cache archive...
+Stored Cache to yarn-packages-v1-qwa_N++0aXeaXlpPu1TzrRMKJU1V7n3NYN+0BxBVg20=
+  * /home/circleci/.cache/yarn
+```
 
-Overall this repository is utilized during the onboarding process for multiple teams in the Customer Engineering organization. Feel free to reach out to @nbialostosky (Nick Bialostosky) if you need a PR review or general questions. If they are not available, anyone on the support team should be able to assist (#custeng-support).
+- Push another commit and confirm the cache is restored/used (should see something like this):
 
-# Keep a log
+```
+Found a cache from build 44 at yarn-packages-qwa_N++0aXeaXlpPu1TzrRMKJU1V7n3NYN+0BxBVg20=
+Size: 160 B
+Cached paths:
+  * /home/circleci/.cache/yarn
 
-Each challenge will ask you to record the link to the workflow or job where you have completed the challenge.
+Downloading cache archive...
+Validating cache...
 
-Good luck!
+Unarchiving cache...
+```
+
+- Finally make the neccesary edits to the config to 'bust' or 'clear' the cache so it doesn't use the existing saved cache and instead stores a new one.
+
+**Help:**
+<details>
+  <summary>Spoiler warning</summary>
+  https://circleci.com/docs/2.0/caching/
+  https://circleci.com/docs/2.0/yarn/#caching
+  https://circleci.com/docs/2.0/caching/#clearing-cache
+</details>
