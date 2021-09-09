@@ -10,12 +10,10 @@ jobs:
       - run:
           name: Run Hello test
           command: |
-            touch src/test_hello.sh
             bash src/test_hello.sh
       - run:
           name: Run Goodbye test
           command: |
-            touch src/test_goodbye.sh
             bash src/test_goodbye.sh
 
 workflows:
