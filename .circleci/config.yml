@@ -10,10 +10,12 @@ jobs:
       - run:
           name: Run Hello test
           command: |
+            ls src/
             bash src/test_hello.sh
       - run:
           name: Run Goodbye test
           command: |
+            ls src/
             bash src/test_goodbye.sh
 
 workflows:
