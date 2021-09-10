@@ -13,8 +13,7 @@ commands:
         type: string
         default: "~/randomfolder"
     steps:
-      - run: mkdir -p ~/<<parameters.path>>
-      - run: echo "Log file" > ~/<<parameters.path>>/log.txt
+      - run: echo "Log file" > <<parameters.path>>/log.txt
       - run: ls <<parameters.path>>
   endmission:
     description: "Use the parameters of this command to exit this mission with a green build."
@@ -31,7 +30,7 @@ jobs:
     steps:
       - run: echo "console.log('complete')" | node
       - generatelogs:
-          path: project
+          path: "~/project"
       - run:
           name: Check for logs - DO NOT MODIFY
           command: |
