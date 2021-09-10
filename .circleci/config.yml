@@ -15,6 +15,7 @@ workflows:
   workflow:
     jobs:
       - build:
+          name: Generating test data
           pre-steps:
             - build-tools/env-info
           post-steps:
