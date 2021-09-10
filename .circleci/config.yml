@@ -29,7 +29,8 @@ jobs:
     executor: custom-node
     steps:
       - run: echo "console.log('complete')" | node
-      - generatelogs
+      - generatelogs:
+          path: project
       - run:
           name: Check for logs - DO NOT MODIFY
           command: |
