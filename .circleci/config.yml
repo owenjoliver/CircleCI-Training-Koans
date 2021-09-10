@@ -29,8 +29,14 @@ workflows:
   # This only runs on deploy tags and not branches
   tagged-build:
     jobs:
-      - build
+      - build:
+          filters:
+            tags:
+              only: /beta*/
       - test:
+          filters:
+            tags:
+              only: /beta*/
           requires:
             - build
       - deploy:
