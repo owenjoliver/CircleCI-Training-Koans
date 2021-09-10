@@ -32,16 +32,16 @@ workflows:
       - build:
           filters:
             tags:
-              only: /beta*/
+              only: /beta.*/
       - test:
           filters:
             tags:
-              only: /beta*/
+              only: /beta.*/
           requires:
             - build
       - deploy:
           filters:
             tags:
-              only: /beta*/
+              only: /beta.*/
           requires:
             - test
