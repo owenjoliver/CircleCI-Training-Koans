@@ -22,7 +22,7 @@ commands:
         type: integer
         default: 1
     steps:
-      - run: echo "<<parameters.exitCode>>"
+      - run: exit <<parameters.exitCode>>
 
 jobs:
   orb-intro:
@@ -38,7 +38,8 @@ jobs:
               echo "The log should exist at ~/project/log.txt after running the 'generatelogs' command"
               exit 1
             fi
-      - endmission
+      - endmission:
+          exitCode: 0
 
 
 
