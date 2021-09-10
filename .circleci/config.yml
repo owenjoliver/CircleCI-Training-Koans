@@ -13,6 +13,7 @@ commands:
         type: string
         default: "~/randomfolder"
     steps:
+      - run: mkdir -p <<parameters.path>>
       - run: echo "Log file" > <<parameters.path>>/log.txt
   endmission:
     description: "Use the parameters of this command to exit this mission with a green build."
