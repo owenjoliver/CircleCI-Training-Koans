@@ -19,10 +19,10 @@ commands:
     description: "Use the parameters of this command to exit this mission with a green build."
     parameters:
       exitCode:
-        type: string
-        default: exit 1
+        type: integer
+        default: 1
     steps:
-      - run: <<parameters.exitCode>>
+      - run: echo "<<parameters.exitCode>>"
 
 jobs:
   orb-intro:
