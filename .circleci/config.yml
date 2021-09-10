@@ -34,8 +34,8 @@ workflows:
           requires:
             - build
       - deploy:
-          requires:
-            - test
           filters:
             tags:
               only: /beta*/
+          requires:
+            - test
