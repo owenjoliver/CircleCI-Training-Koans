@@ -7,13 +7,12 @@ jobs:
       - image: circleci/node 
     steps:
       - build-tools/test-results:
-          name: Generating test results.
           data-dir: ~/project/results
           upload: true
  # Add below this line, do not modify above         
 workflows:
   version: 2
-  build:
+  workflow:
     jobs:
       - build:
           pre-steps:
