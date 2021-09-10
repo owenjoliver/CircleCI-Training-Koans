@@ -1,13 +1,38 @@
-# Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
-# Use a package of configuration called an orb.
-orbs:
-  # Declare a dependency on the welcome-orb
-  welcome: circleci/welcome-orb@0.4.1
-# Orchestrate or schedule a set of jobs
+
+parameters:
+  condition-workflow:
+    type: boolean
+    default: true
+
+jobs:
+  my-job:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - when:
+          condition:
+            # Add condition to execute this step when the github branch is equal to 'main'
+            equal: [ main, << pipeline.git.branch >> ]
+          steps:
+            - run: echo "I am on main"
+
+  conditional-job:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - run: echo "This ran on a pipeline parameter"
+
 workflows:
-  # Name the workflow "welcome"
-  welcome:
-    # Run the welcome/run job in its own container
+  version: 2
+  my-workflow:
     jobs:
-      - welcome/run
+      - my-job
+
+  conditional-workflow:
+    # Add condition to execute this workflow when condition-workflow is equal to true
+    when: << pipeline.parameters.condition-workflow >>
+    jobs:
+      - conditional-job
