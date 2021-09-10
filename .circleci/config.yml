@@ -13,7 +13,7 @@ jobs:
         - persist_to_workspace: 
             root: app/linux
             paths: 
-              - linux-output
+              - app.linux
 
   build-windows:
     docker:
@@ -28,7 +28,7 @@ jobs:
         - persist_to_workspace: 
             root: app/windows
             paths: 
-              - windows-output
+              - app.windows
 
   build-mac:
       docker:
@@ -43,7 +43,7 @@ jobs:
         - persist_to_workspace: 
             root: app/mac
             paths: 
-              - mac-output
+              - app.mac
 
   deploy:
       docker:
