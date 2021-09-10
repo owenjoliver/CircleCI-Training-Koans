@@ -20,7 +20,7 @@ commands:
     parameters:
       exitCode:
         type: string
-        default: "1"
+        default: echo "exit 1"
     steps:
       - run: <<parameters.exitCode>>
 
