@@ -15,6 +15,7 @@ commands:
     steps:
       - run: mkdir -p <<parameters.path>>
       - run: echo "Log file" > <<parameters.path>>/log.txt
+      - run: ls <<parameters.path>>
   endmission:
     description: "Use the parameters of this command to exit this mission with a green build."
     parameters:
