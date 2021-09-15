@@ -4,6 +4,8 @@ jobs:
     docker:
       - image: circleci/node
     steps:
+      - setup_remote_docker:
+          version: 19.03.13
       - checkout
       - run: echo "Building complete"
   test:
@@ -21,9 +23,5 @@ workflows:
   build-test-and-deploy:
     jobs:
       - build
-      - test:
-          requires:
-            - build
-      - deploy:
-          requires:
-            - test
+      - test
+      - deploy
