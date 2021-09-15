@@ -1,13 +1,18 @@
 version: 2.1
 jobs:
   build:
+    working_directory: /tmp
     docker:
       - image: circleci/node
     steps:
-      - setup_remote_docker:
-          version: 19.03.13
       - checkout
       - run: echo "Building complete"
+      - run:
+          name: Creating Dummy Artifacts
+          command: |
+            echo "my artifact file" > /tmp/art-1;
+            mkdir /tmp/artifacts;
+            echo "my artifact files in a dir" > /tmp/artifacts/art-2;
   test:
     docker:
       - image: circleci/node
