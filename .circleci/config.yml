@@ -1,19 +1,19 @@
 version: 2.1
 jobs:
   build:
-    working_directory: /tmp
+    working_directory: ~/tmp
     docker:
       - image: circleci/node
     steps:
       - checkout
       - run: echo "Building complete"
-      - run: ls /tmp 
+      - run: ls ~/tmp 
       - run:
           name: Creating Dummy Artifacts
           command: |
-            echo "my artifact file" > /tmp/art-1;
-            mkdir /tmp/artifacts;
-            echo "my artifact files in a dir" > /tmp/artifacts/art-2;
+            echo "my artifact file" > ~/tmp/art-1;
+            mkdir ~/tmp/artifacts;
+            echo "my artifact files in a dir" > ~/tmp/artifacts/art-2;
   test:
     docker:
       - image: circleci/node
