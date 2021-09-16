@@ -23,6 +23,9 @@ jobs:
         command: mkdir -p ~/artifact_testing
 
     - store_artifacts:
+          path: ~/artifact_testing/artifact_testing.json
+
+    - store_artifacts:
           path: ~/artifact_testing/artifact_testing-<< pipeline.number >>.json
 
 workflows:
