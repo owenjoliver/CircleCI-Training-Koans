@@ -19,6 +19,9 @@ jobs:
         command: |
           echo "my artifact file" > /home/circleci/example.txt;
 
+    - run:
+        command: mkdir -f ~/artifact_testing
+
     - store_artifacts:
           path: << parameters.webpack_stats_path >>
           destination: /
