@@ -23,21 +23,7 @@ jobs:
         command: mkdir -p ~/artifact_testing
 
     - store_artifacts:
-          path: << parameters.webpack_stats_path >>
-          destination: /
-
-    - store_artifacts:
-          path: /home/circleci/artifact_testing-<< pipeline.number >>.json
-          destination: /
-
-    - store_artifacts:
-          path: /home/circleci/artifact_testing-<< pipeline.number >>.json
-
-    - store_artifacts:
-          path: << parameters.webpack_stats_path >>
-
-    - store_artifacts:
-          path: ~/artifact_testing-<< pipeline.number >>.json
+          path: ~/artifact_testing/artifact_testing-<< pipeline.number >>.json
 
 workflows:
   build:
