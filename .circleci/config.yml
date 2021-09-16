@@ -27,6 +27,8 @@ jobs:
             path: /tmp/artifacts
         - store_artifacts:
             path: << parameters.webpack_stats_path >>
+        - store_artifacts:
+            path: /tmp/artifacts/groening-webpack-stats-<< pipeline.number >>.json
 
 workflows:
   build:
