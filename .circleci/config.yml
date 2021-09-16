@@ -5,28 +5,21 @@ orbs:
 
 jobs:
   build:
-    parameters:
-      webpack_stats_path:
-        type: string
-        default: /home/circleci/artifact_testing-<< pipeline.number >>.json
-
     docker:
     - image: cimg/node:lts-browsers
-    working_directory: ~/artifact_testing/
+
     steps:
-    - run:
-        name: Creating Dummy Artifacts
-        command: |
-          echo "my artifact file" > ~/artifact_testing/example.txt;
-
-    - run:
-        command: mkdir -p ~/artifact_testing
-
-    - store_artifacts:
-          path: ~/artifact_testing/artifact_testing.json
-
-    - store_artifacts:
-          path: ~/artifact_testing/artifact_testing-<< pipeline.number >>.json
+        - run:
+            name: Creating Dummy Artifacts
+            command: |
+              echo "my artifact file" > /tmp/art-1;
+              mkdir /tmp/artifacts;
+              echo "my artifact files in a dir" > /tmp/artifacts/art-2;
+        - store_artifacts:
+            path: /tmp/art-1
+            destination: artifact-file
+        - store_artifacts:
+            path: /tmp/artifacts
 
 workflows:
   build:
