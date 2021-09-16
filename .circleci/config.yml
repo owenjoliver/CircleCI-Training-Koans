@@ -17,7 +17,7 @@ jobs:
     - run:
         name: Creating Dummy Artifacts
         command: |
-          echo "my artifact file" > /home/circleci/;
+          echo "my artifact file" > /home/circleci/example.txt;
 
     - store_artifacts:
           path: << parameters.webpack_stats_path >>
