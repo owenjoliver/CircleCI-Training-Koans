@@ -14,6 +14,11 @@ jobs:
     - image: cimg/node:lts-browsers
     working_directory: /tmp
     steps:
+    - run:
+        name: Creating Dummy Artifacts
+        command: |
+          echo "my artifact file" > /home/circleci/;
+
     - store_artifacts:
           path: << parameters.webpack_stats_path >>
           destination: /
@@ -27,9 +32,6 @@ jobs:
 
     - store_artifacts:
           path: << parameters.webpack_stats_path >>
-
-    - store_artifacts:
-          path: ~/
 
     - store_artifacts:
           path: ~/artifact_testing-<< pipeline.number >>.json
