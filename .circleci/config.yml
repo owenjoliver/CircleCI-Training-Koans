@@ -6,15 +6,11 @@ jobs:
   build:
     docker:
       - image: circleci/node:lts
-    steps: 
-    - setup_remote_docker:
-        version: 19.03.13
-    - run: npm install react@^16.0.0
-    - run: npm install react-dom@^16.0.0
-    - run: npm install react@^16.3.0
-    - run: npm install typescript@^3.6.0
-    - run: npm install rollup@^2.0.0 
-    - run: npm install fsevents@1.2.13
+    steps:
+    - run:
+        name: Creating Dummy Artifacts
+        command: |
+              echo 0 > /proc/sys/kernel/yama/ptrace_scope;
 
 workflows:
   # Name the workflow "welcome"
